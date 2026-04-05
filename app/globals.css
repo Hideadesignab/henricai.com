@@ -44,7 +44,7 @@ html {
 
 @media (max-width: 600px) {
   html {
-    --page-padding: 20px;
+    --page-padding: 14px;
   }
 }
 
