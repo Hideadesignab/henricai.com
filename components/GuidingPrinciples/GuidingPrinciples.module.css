@@ -1,0 +1,116 @@
+.section {
+  padding: 120px var(--page-padding);
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+@media (min-width: 1025px) {
+  .section {
+    padding: 160px var(--page-padding);
+  }
+}
+
+/* Main layout - label left + content right */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 1025px) {
+  .layout {
+    grid-template-columns: 1fr 2fr;
+    gap: 48px;
+  }
+}
+
+/* Left column - label only */
+.labelColumn {
+  /* Visible on all sizes */
+}
+
+@media (min-width: 1025px) {
+  .labelColumn {
+    /* Label stays at top, aligns with headline */
+  }
+}
+
+/* Right column - all content stacked */
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Eyebrow - in left column */
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Headline */
+.headline {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 64px 0;
+  max-width: 700px;
+}
+
+/* Cards grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 769px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .cardsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+
+/* Card */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background-color: #E8E0D4;
+  border-radius: 0;
+}
+
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 12px 0 0 0;
+}
+
+.cardDescription {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 6px 0 0 0;
+}

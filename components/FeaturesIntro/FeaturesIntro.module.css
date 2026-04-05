@@ -1,0 +1,36 @@
+.featuresIntro {
+  padding: 128px 0 var(--space-12) 0;
+  background-color: #FFFFFF;
+}
+
+@media (min-width: 1025px) {
+  .featuresIntro {
+    padding-top: 160px;
+  }
+}
+
+.headline {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+
+.container {
+  padding: 0 var(--page-padding);
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding: 0 var(--page-padding);
+  }
+}

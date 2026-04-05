@@ -1,0 +1,393 @@
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+
+  /* Pull-down animation using clip-path */
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.megaMenu[data-open="true"] {
+  clip-path: inset(0 0 0 0);
+  pointer-events: auto;
+  transition: clip-path 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.megaMenuInner {
+  background: var(--bg-primary);
+  box-shadow: var(--shadow-menu);
+  transition: background 200ms ease, box-shadow 200ms ease;
+}
+
+/* Dark variant */
+.dark .megaMenuInner {
+  background: #000000;
+  box-shadow: var(--shadow-menu-dark);
+}
+
+.dark .sectionLabel,
+.dark .cardsLabel,
+.dark .cardItemLabel {
+  color: var(--text-primary-dark);
+}
+
+.dark .linkSubtitle {
+  color: var(--text-secondary-dark);
+}
+
+.dark .linkTitle,
+.dark .cardTitle {
+  color: var(--text-primary-dark);
+}
+
+.dark .cardDate,
+.dark .cardSubtitle {
+  color: var(--text-secondary-dark);
+}
+
+.dark .cardImage {
+  background: #2A2A2A;
+}
+
+/* Dark hover interaction */
+.dark .linksList:hover .linkItem .linkTitle,
+.dark .linksGrid:hover .linkItem .linkTitle,
+.dark .linksList:hover .linkItem .linkSubtitle,
+.dark .linksGrid:hover .linkItem .linkSubtitle {
+  color: var(--text-muted-dark);
+}
+
+.dark .linksList:hover .linkItem:hover .linkTitle,
+.dark .linksGrid:hover .linkItem:hover .linkTitle,
+.dark .linksList:hover .linkItem:hover .linkSubtitle,
+.dark .linksGrid:hover .linkItem:hover .linkSubtitle {
+  color: var(--text-primary-dark);
+}
+
+/* Green variant */
+.green .megaMenuInner {
+  background: #083a3d;
+  box-shadow: var(--shadow-menu-dark);
+}
+
+.green .sectionLabel,
+.green .cardsLabel,
+.green .cardItemLabel {
+  color: var(--text-primary-dark);
+}
+
+.green .linkSubtitle {
+  color: var(--text-secondary-dark);
+}
+
+.green .linkTitle,
+.green .cardTitle {
+  color: var(--text-primary-dark);
+}
+
+.green .cardDate,
+.green .cardSubtitle {
+  color: var(--text-secondary-dark);
+}
+
+.green .cardImage {
+  background: rgba(255,255,255,0.08);
+}
+
+.green .linksList:hover .linkItem .linkTitle,
+.green .linksGrid:hover .linkItem .linkTitle,
+.green .linksList:hover .linkItem .linkSubtitle,
+.green .linksGrid:hover .linkItem .linkSubtitle {
+  color: var(--text-muted-dark);
+}
+
+.green .linksList:hover .linkItem:hover .linkTitle,
+.green .linksGrid:hover .linkItem:hover .linkTitle,
+.green .linksList:hover .linkItem:hover .linkSubtitle,
+.green .linksGrid:hover .linkItem:hover .linkSubtitle {
+  color: var(--text-primary-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .megaMenu {
+    transition: none;
+  }
+}
+
+.container {
+  position: relative;
+  padding: 36px var(--full-bleed-padding, var(--page-padding)) 36px;
+  min-height: 400px;
+  display: flex;
+  justify-content: flex-start;
+
+  /* Content fade-out on close (no delay) */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+@media (min-width: 1025px) {
+  .container {
+    padding: 40px var(--full-bleed-padding, var(--page-padding)) 40px;
+  }
+}
+
+.megaMenu[data-open="true"] .container {
+  /* Content fade-in after reveal starts (with delay) */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 250ms ease 80ms, transform 250ms ease 80ms;
+}
+
+.containerLinksOnly {
+  /* no special override needed */
+}
+
+.linksArea {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+}
+
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 200ms ease;
+}
+
+.linksList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linksGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.linkItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.linkTitle {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.4;
+  transition: color 200ms ease;
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.linkItem:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Hover interaction: dim all items when any is hovered */
+.linksList:hover .linkItem .linkTitle,
+.linksGrid:hover .linkItem .linkTitle {
+  color: var(--text-muted);
+}
+
+.linksList:hover .linkItem .linkSubtitle,
+.linksGrid:hover .linkItem .linkSubtitle {
+  color: var(--text-muted);
+}
+
+/* Hovered item: title stays dark, subtitle also becomes dark */
+.linksList:hover .linkItem:hover .linkTitle,
+.linksGrid:hover .linkItem:hover .linkTitle {
+  color: var(--text-primary);
+}
+
+.linksList:hover .linkItem:hover .linkSubtitle,
+.linksGrid:hover .linkItem:hover .linkSubtitle {
+  color: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow {
+    transition: none;
+  }
+}
+
+.linkItemDisabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.comingSoonBadge {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid rgba(10, 10, 10, 0.12);
+  border-radius: 3px;
+  padding: 2px 6px;
+  margin-left: 8px;
+  line-height: 1;
+}
+
+.dark .comingSoonBadge {
+  color: var(--text-secondary-dark);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.green .comingSoonBadge {
+  color: var(--text-muted-dark);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.linkSubtitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+  max-width: 340px;
+  transition: color 200ms ease;
+}
+
+.cardsArea {
+  margin-left: 56px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardsLabel {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0;
+  transition: color 200ms ease;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+
+.cardImage {
+  margin-bottom: 6px;
+}
+
+.card:hover {
+  opacity: var(--hover-opacity);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
+
+.cardImage {
+  width: 480px;
+  height: 270px;
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  transition: background 200ms ease;
+}
+
+.cardDate {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 200ms ease;
+}
+
+.cardItemLabel {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin: 0;
+  transition: color 200ms ease;
+}
+
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+  transition: color 200ms ease;
+}
+
+.cardArrow {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.card:hover .cardArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardArrow {
+    transition: none;
+  }
+}
+
+.cardSubtitle {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 480px;
+  margin: 0;
+  transition: color 200ms ease;
+}

@@ -1,0 +1,45 @@
+.valueProp {
+  padding: var(--space-24) 0 100px 0;
+  background-color: #FFFFFF;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-12);
+}
+
+@media (min-width: 1025px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+  }
+}
+
+.left {
+  display: none;
+}
+
+@media (min-width: 1025px) {
+  .left {
+    display: block;
+  }
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin: 0;
+  max-width: 600px;
+}

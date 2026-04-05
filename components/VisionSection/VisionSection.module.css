@@ -1,0 +1,140 @@
+.section {
+  position: relative;
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--page-padding);
+  right: var(--page-padding);
+  height: 1px;
+  background: var(--border-default);
+}
+
+.container {
+  padding: 64px var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Title */
+.title {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Content row: text+founder left, image right */
+.contentRow {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Left column: text + founder */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+}
+
+.text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Founder */
+.founderBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.founderPhoto {
+  position: relative;
+  width: 220px;
+  max-width: 100%;
+  aspect-ratio: 4/5;
+  background-color: var(--card-bg);
+  margin-bottom: 16px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.founderName {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.founderTitle {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Office image */
+.officeImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: var(--card-bg);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* ── Tablet ── */
+
+@media (min-width: 769px) {
+  .contentRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .officeImage {
+    grid-column: 2 / 4;
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+}
+
+/* ── Desktop ── */
+
+@media (min-width: 1025px) {
+  .container {
+    padding: 80px var(--page-padding);
+    gap: 48px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .founderPhoto {
+    width: 220px;
+  }
+}

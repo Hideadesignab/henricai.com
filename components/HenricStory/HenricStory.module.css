@@ -1,0 +1,203 @@
+.wrapper {
+  background-color: #FFFFFF;
+}
+
+/* Container for headlines */
+.container {
+  padding: 0 var(--page-padding);
+  margin-bottom: var(--space-10);
+}
+
+@media (min-width: 1025px) {
+  .container {
+    margin-bottom: var(--space-12);
+  }
+}
+
+/* Headline styling - large statement typography */
+.headline {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* ========================================
+   SECTION 1: Editorial Typography
+   ======================================== */
+.section1 {
+  padding-top: 96px;
+  padding-bottom: 64px;
+}
+
+@media (min-width: 1025px) {
+  .section1 {
+    padding-top: 128px;
+    padding-bottom: 64px;
+  }
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  padding: 0 var(--page-padding);
+}
+
+@media (min-width: 769px) {
+  .editorialGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.editorialItem {
+  border-top: 1px solid #E5E5E5;
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-8);
+}
+
+@media (min-width: 769px) {
+  .editorialItem {
+    padding-right: var(--space-6);
+  }
+
+  .editorialItem:last-child {
+    padding-right: 0;
+  }
+}
+
+.editorialWord {
+  display: block;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 300;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+}
+
+.editorialDescription {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ========================================
+   SECTION 2: Clean Text Rows
+   ======================================== */
+.section2 {
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+.textRowsContainer {
+  padding: 0 var(--page-padding);
+  max-width: 900px;
+}
+
+.textRow {
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.textRow:first-child {
+  border-top: 1px solid #E5E5E5;
+}
+
+.textRowWord {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.textRowDash {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.textRowDescription {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   SECTION 3: Image Cards
+   ======================================== */
+.section3 {
+  padding-top: 64px;
+  padding-bottom: 96px;
+}
+
+@media (min-width: 1025px) {
+  .section3 {
+    padding-bottom: 128px;
+  }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 0 var(--page-padding);
+}
+
+@media (min-width: 769px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .cardsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card {
+  transition: transform 200ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.cardImage {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: #E5E5E5;
+  margin-bottom: var(--space-4);
+}
+
+.cardTitle {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.cardDescription {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}

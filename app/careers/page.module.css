@@ -1,0 +1,254 @@
+/* ========================
+   SHARED
+   ======================== */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.sectionHeadline {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin: 0 0 32px;
+}
+
+@media (min-width: 1025px) {
+  .sectionHeadline {
+    font-size: 28px;
+  }
+}
+
+/* ========================
+   HERO
+   ======================== */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px var(--page-padding) 64px;
+}
+
+@media (min-width: 1025px) {
+  .hero {
+    padding: 120px var(--page-padding) 80px;
+  }
+}
+
+.hero .eyebrow {
+  margin-bottom: 12px;
+}
+
+.subline {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0 0 16px;
+}
+
+.headline {
+  font-family: var(--font-sans);
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0;
+  max-width: 600px;
+}
+
+@media (min-width: 1025px) {
+  .headline {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .headline {
+    font-size: 32px;
+  }
+}
+
+.ctaButton {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 12px 24px;
+  background: #000000;
+  color: #ffffff;
+  border-radius: var(--radius-button);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition: opacity 200ms ease;
+}
+
+.ctaButton:hover {
+  opacity: var(--hover-opacity);
+}
+
+/* ========================
+   MISSION
+   ======================== */
+
+.mission {
+  background-color: #FAFAFA;
+  padding: 80px var(--page-padding);
+}
+
+@media (min-width: 1025px) {
+  .mission {
+    padding: 120px var(--page-padding);
+  }
+}
+
+.missionInner {
+  max-width: 640px;
+}
+
+.missionText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ========================
+   OPEN ROLES
+   ======================== */
+
+.roles {
+  padding: 80px var(--page-padding);
+  scroll-margin-top: 80px;
+}
+
+@media (min-width: 1025px) {
+  .roles {
+    padding: 120px var(--page-padding);
+  }
+}
+
+.rolesInner {
+  max-width: 640px;
+}
+
+.roleList {
+  display: flex;
+  flex-direction: column;
+}
+
+.roleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-default);
+  text-decoration: none;
+  min-height: 44px;
+  transition: opacity 200ms ease;
+}
+
+.roleRow:last-child {
+  border-bottom: 1px solid var(--border-default);
+}
+
+.roleRow:hover {
+  opacity: 0.6;
+}
+
+.roleTitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.roleLocation {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+/* ========================
+   HOW WE HIRE
+   ======================== */
+
+.hiring {
+  background-color: #FAFAFA;
+  padding: 80px var(--page-padding);
+}
+
+@media (min-width: 1025px) {
+  .hiring {
+    padding: 120px var(--page-padding);
+  }
+}
+
+.hiringInner {
+  max-width: 900px;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 768px) {
+  .stepsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepNumber {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.stepDescription {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}

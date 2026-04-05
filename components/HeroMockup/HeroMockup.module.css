@@ -1,0 +1,313 @@
+.mockup {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 32px 0;
+}
+
+.window {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: none;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 180px;
+  min-width: 180px;
+  background: #0A0A0A;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sidebarHeader {
+  padding: 0 16px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 12px;
+}
+
+.logoMark {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+  height: 14px;
+}
+
+.logoBar {
+  width: 3px;
+  background: #ffffff;
+  border-radius: 1px;
+}
+
+.logoBar:nth-child(1) { height: 8px; }
+.logoBar:nth-child(2) { height: 12px; }
+.logoBar:nth-child(3) { height: 10px; }
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 0 8px;
+  flex: 1;
+}
+
+.navItem {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 6px 8px;
+  border-radius: 3px;
+  cursor: default;
+}
+
+.navItemActive {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 500;
+}
+
+.sidebarFooter {
+  padding: 12px 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
+}
+
+.workspaceName {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.02em;
+}
+
+/* Main content area */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.mainHeader {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.breadcrumb {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.breadcrumbMuted {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.breadcrumbSep {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  min-width: 160px;
+}
+
+.searchIcon {
+  color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+}
+
+.searchPlaceholder {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.25);
+}
+
+.uploadBtn {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #000000;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+
+/* Table */
+.tableHeader {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 70px;
+  gap: 8px;
+  padding: 8px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tableBody {
+  flex: 1;
+  overflow: hidden;
+}
+
+.tableRow {
+  display: grid;
+  grid-template-columns: 1fr 60px 90px 70px;
+  gap: 8px;
+  padding: 7px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  align-items: center;
+}
+
+.tableRow:hover {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+.colName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.colType,
+.colDate,
+.colSize {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.fileIcon {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 2px 4px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.fileIconPDF {
+  background: rgba(220, 38, 38, 0.08);
+  color: #DC2626;
+}
+
+.fileIconDOCX {
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
+}
+
+.fileIconXLSX {
+  background: rgba(22, 163, 74, 0.08);
+  color: #16A34A;
+}
+
+.fileName {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 450;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Fade overlays */
+.fadeBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #E5E5E5, transparent);
+  pointer-events: none;
+}
+
+.fadeRight {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(to left, #E5E5E5, transparent);
+  pointer-events: none;
+}
+
+.fadeLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 48px;
+  background: linear-gradient(to right, #E5E5E5, transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .mockup {
+    padding: 16px 16px 0;
+  }
+
+  .tableHeader,
+  .tableRow {
+    grid-template-columns: 1fr 50px 70px;
+  }
+
+  .colSize {
+    display: none;
+  }
+
+  .searchBar {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+}

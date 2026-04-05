@@ -1,0 +1,129 @@
+.section {
+  position: relative;
+  padding: 120px 0 0 0;
+  background-color: #FFFFFF;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--page-padding);
+  right: var(--page-padding);
+  height: 1px;
+  background: #E5E5E5;
+}
+
+@media (min-width: 1025px) {
+  .section {
+    padding: 160px 0 0 0;
+  }
+}
+
+/* Header */
+.header {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  margin-bottom: 64px;
+}
+
+@media (min-width: 1025px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    padding: 0 48px;
+    margin-bottom: 80px;
+  }
+}
+
+.headline {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0 0 24px 0;
+  max-width: 700px;
+}
+
+@media (min-width: 1025px) {
+  .headline {
+    font-size: 28px;
+    margin: 0;
+  }
+}
+
+.eyebrow {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Cards Grid */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 769px) {
+  .cardsGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Card */
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card Image */
+.cardImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--card-bg);
+  transition: background-color 0.4s ease;
+}
+
+.card:hover .cardImage {
+  background-color: var(--card-bg-hover);
+}
+
+/* Card Content */
+.cardContent {
+  padding: 32px 24px 48px 24px;
+}
+
+@media (min-width: 1025px) {
+  .cardContent {
+    padding: 40px 48px 80px 48px;
+  }
+}
+
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+  letter-spacing: -0.01em;
+}
+
+.cardDescription {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}

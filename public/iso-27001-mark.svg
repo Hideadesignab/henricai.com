@@ -1,0 +1,37 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <path id="upperArc" d="M 120,218 A 98,98 0 1,1 120.001,218" fill="none"/>
+    <path id="lowerArc" d="M 120,22 A 98,98 0 1,0 120.001,22" fill="none"/>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle cx="120" cy="120" r="116" fill="white" stroke="#1A5C9E" stroke-width="4"/>
+
+  <!-- Inner circle -->
+  <circle cx="120" cy="120" r="84" fill="#D0CFCA"/>
+
+  <!-- Top ring text: Information Security Management System -->
+  <text fill="#1A5C9E" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="600" letter-spacing="1" dy="15">
+    <textPath href="#upperArc" startOffset="50%" text-anchor="middle">Information Security Management System</textPath>
+  </text>
+
+  <!-- Bottom ring text: Certified -->
+  <text fill="#1A5C9E" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="500" letter-spacing="2" dy="-6">
+    <textPath href="#lowerArc" startOffset="50%" text-anchor="middle">Certified</textPath>
+  </text>
+
+  <!-- Globe wireframe -->
+  <g stroke="white" stroke-width="1.8" fill="none">
+    <circle cx="120" cy="66" r="20"/>
+    <ellipse cx="120" cy="66" rx="20" ry="7.5"/>
+    <ellipse cx="120" cy="66" rx="7.5" ry="20"/>
+    <line x1="100" y1="60" x2="140" y2="60"/>
+    <line x1="100" y1="72" x2="140" y2="72"/>
+  </g>
+
+  <!-- ISO text -->
+  <text x="120" y="122" text-anchor="middle" fill="#1A5C9E" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="bold" letter-spacing="3">ISO</text>
+
+  <!-- 27001 text -->
+  <text x="120" y="162" text-anchor="middle" fill="#1A5C9E" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="bold" letter-spacing="1">27001</text>
+</svg>

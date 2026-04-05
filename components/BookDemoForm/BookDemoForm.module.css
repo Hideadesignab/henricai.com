@@ -1,0 +1,201 @@
+.card {
+  background: #ffffff;
+  padding: 32px 40px;
+  max-width: 780px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.formTitle {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fieldGroup {
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.required {
+  color: #000000;
+}
+
+.input,
+.select,
+.textarea {
+  width: 100%;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: #000000;
+  background: #ffffff;
+  transition: border-color 200ms ease;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #9CA3AF;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+.inputError {
+  border-color: #DC2626;
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 32px;
+}
+
+.textarea {
+  height: auto;
+  padding: 8px 10px;
+  resize: vertical;
+  min-height: 60px;
+}
+
+.error {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: #DC2626;
+  margin-top: 3px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  accent-color: #000000;
+  cursor: pointer;
+}
+
+.checkboxText {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: #4B5563;
+  line-height: 1.5;
+}
+
+.privacyText {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+
+.privacyLink {
+  color: #000000;
+  text-decoration: underline;
+}
+
+.privacyLink:hover {
+  color: #333333;
+}
+
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+}
+
+.submitButton:hover {
+  background: #1A1A1A;
+}
+
+.submitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.successTitle {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+  margin: 0 0 8px;
+}
+
+.successText {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: #6B7280;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 24px 20px;
+  }
+
+  .fieldRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .formTitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+}

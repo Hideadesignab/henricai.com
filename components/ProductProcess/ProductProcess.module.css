@@ -1,0 +1,138 @@
+.section {
+  background: var(--bg-primary);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 80px var(--page-padding);
+}
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  margin-bottom: 48px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 48px;
+  align-items: start;
+  padding: 48px 0;
+  border-top: 1px solid var(--border-default);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.textColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepNumber {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.headline {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+}
+
+.description {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+  max-width: 420px;
+}
+
+.imageColumn {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--card-bg);
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ── Desktop ── */
+
+@media (min-width: 1025px) {
+  .container {
+    padding: 120px var(--page-padding);
+  }
+}
+
+/* ── Tablet ── */
+
+@media (max-width: 1024px) {
+  .step {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 0;
+  }
+
+  .textColumn {
+    order: 2;
+  }
+
+  .imageColumn {
+    order: 1;
+  }
+
+  .headline {
+    font-size: 14px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 64px var(--page-padding);
+  }
+
+  .eyebrow {
+    margin-bottom: 32px;
+  }
+
+  .step {
+    padding: 32px 0;
+  }
+}
+
+/* ── Small Mobile ── */
+
+@media (max-width: 480px) {
+  .container {
+    padding: 48px var(--page-padding);
+  }
+}
