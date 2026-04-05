@@ -80,12 +80,21 @@ export function BookDemoForm() {
 
     setIsSubmitting(true)
 
-    // TODO: Connect to backend/email service
-    console.log('Form submitted:', formData)
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    try {
+      const res = await fetch('/api/book-demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-    setIsSubmitting(false)
-    setIsSuccess(true)
+      if (!res.ok) throw new Error('Failed to submit')
+
+      setIsSuccess(true)
+    } catch {
+      setErrors({ firstName: 'Something went wrong. Please try again.' })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (field: keyof FormData) => (
