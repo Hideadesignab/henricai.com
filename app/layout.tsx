@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: 'Henric',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
       },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Henric',
     description: 'Document intelligence for real estate',
-    images: ['/og-image.png'],
+    images: ['/og-image.jpg'],
   },
 }
 
