@@ -35,10 +35,28 @@ const redRose = Red_Rose({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Henric | AI Platform for Real Estate Professionals',
+    default: 'Henric',
     template: 'Henric | %s',
   },
-  description: 'Review faster. Find anything. Structure everything. Purpose-built AI for the teams behind every building. Book a demo.',
+  description: 'Document intelligence for real estate',
+  openGraph: {
+    title: 'Henric',
+    description: 'Document intelligence for real estate',
+    siteName: 'Henric',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Henric',
+    description: 'Document intelligence for real estate',
+    images: ['/og-image.png'],
+  },
 }
 
 export default function RootLayout({
