@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Tinos, Red_Rose } from 'next/font/google'
 import { ConditionalHeader } from '@/components/ConditionalHeader'
 import { ConditionalFooter } from '@/components/ConditionalFooter'
+import { CookieBanner } from '@/components/CookieBanner'
 
 import './globals.css'
 
@@ -72,6 +73,7 @@ export default function RootLayout({
           {children}
         </main>
         <ConditionalFooter />
+        <CookieBanner />
       </body>
     </html>
   )
