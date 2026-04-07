@@ -20,12 +20,6 @@ const products = [
     description:
       'Managing a portfolio means reading thousands of pages no one else will. Henric lets you extract, compare, and verify across hundreds of documents at once — every data point traced to the exact clause and page.',
   },
-  {
-    title: 'Control the room',
-    image: '/images/features/ledger.png',
-    description:
-      'Due diligence, refinancing, valuation — every process starts with a data room that takes weeks to build. Henric assembles it from your documents automatically. One link per counterparty. Field-level permissions. Full audit trail.',
-  },
 ]
 
 export default function ProductOverview() {
