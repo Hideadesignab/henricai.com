@@ -1,11 +1,21 @@
 .page {
   min-height: 100vh;
-  background-color: #f1f1f1;
+  background-color: #000000;
+  background-image: url('/images/cta-bg-mobile.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 64px var(--page-padding) 16px;
   transition: opacity 450ms ease-out, transform 450ms ease-out;
+}
+
+@media (min-width: 769px) {
+  .page {
+    background-image: url('/images/cta-bg-desktop.png');
+  }
 }
 
 .hidden {
