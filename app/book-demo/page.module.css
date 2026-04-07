@@ -1,5 +1,6 @@
 .page {
-  min-height: 100vh;
+  position: fixed;
+  inset: 0;
   background-color: #000000;
   background-image: url('/images/cta-bg-mobile.png');
   background-size: cover;
@@ -9,6 +10,8 @@
   align-items: center;
   justify-content: center;
   padding: 64px var(--page-padding) 16px;
+  overflow: hidden;
+  z-index: 50;
   transition: opacity 450ms ease-out, transform 450ms ease-out;
 }
 
@@ -39,9 +42,19 @@
   }
 }
 
+.formWrapper {
+  max-width: 780px;
+  width: 100%;
+  transform-origin: center center;
+}
+
 @media (max-width: 768px) {
   .page {
-    padding: 100px 16px 48px;
+    padding: 72px 16px 16px;
     align-items: flex-start;
+  }
+
+  .formWrapper {
+    transform-origin: top center;
   }
 }
