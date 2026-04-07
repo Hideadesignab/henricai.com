@@ -158,6 +158,14 @@
   }
 }
 
+.desktopVideo {
+  display: block;
+}
+
+.mobileVideo {
+  display: none;
+}
+
 /* Mobile responsiveness */
 @media (max-width: 768px) {
   .headline {
@@ -173,6 +181,14 @@
     aspect-ratio: 5 / 4;
     object-fit: cover;
     object-position: center;
+  }
+
+  .desktopVideo {
+    display: none;
+  }
+
+  .mobileVideo {
+    display: block;
   }
 }
 
