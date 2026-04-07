@@ -30,12 +30,21 @@ export function CardVideo({ desktopSrc, mobileSrc, startOffset = 0, scale, mobil
   }, [])
 
   useEffect(() => {
-    if (videoRef.current) {
-      if (startOffset > 0) {
-        videoRef.current.currentTime = startOffset
-      }
-      if (isDesktop) {
-        videoRef.current.pause()
+    const video = videoRef.current
+    if (!video) return
+    video.muted = true
+    video.playsInline = true
+    if (startOffset > 0) {
+      video.currentTime = startOffset
+    }
+    if (isDesktop) {
+      video.pause()
+    } else {
+      const tryPlay = () => { video.play().catch(() => {}) }
+      if (video.readyState >= 2) {
+        tryPlay()
+      } else {
+        video.addEventListener('loadeddata', tryPlay, { once: true })
       }
     }
   }, [isDesktop, startOffset])

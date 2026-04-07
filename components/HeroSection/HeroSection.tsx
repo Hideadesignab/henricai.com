@@ -18,8 +18,15 @@ export function HeroSection() {
   }, [])
 
   useEffect(() => {
-    if (mounted && videoRef.current) {
-      videoRef.current.play().catch(() => {})
+    const video = videoRef.current
+    if (!mounted || !video) return
+    video.muted = true
+    video.playsInline = true
+    const tryPlay = () => { video.play().catch(() => {}) }
+    if (video.readyState >= 2) {
+      tryPlay()
+    } else {
+      video.addEventListener('loadeddata', tryPlay, { once: true })
     }
   }, [mounted, isMobile])
 

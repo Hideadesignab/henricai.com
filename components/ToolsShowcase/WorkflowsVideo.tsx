@@ -17,6 +17,18 @@ export function WorkflowsVideo() {
   return (
     <video
       key={isDesktop ? 'desktop' : 'mobile'}
+      ref={(el) => {
+        if (el) {
+          el.muted = true
+          el.playsInline = true
+          const tryPlay = () => { el.play().catch(() => {}) }
+          if (el.readyState >= 2) {
+            tryPlay()
+          } else {
+            el.addEventListener('loadeddata', tryPlay, { once: true })
+          }
+        }
+      }}
       autoPlay
       loop
       muted
