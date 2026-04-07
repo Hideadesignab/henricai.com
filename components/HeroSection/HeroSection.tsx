@@ -1,13 +1,12 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import Link from 'next/link'
 import styles from './HeroSection.module.css'
 
 export function HeroSection() {
   const [isMobile, setIsMobile] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768)
@@ -17,18 +16,27 @@ export function HeroSection() {
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  useEffect(() => {
-    const video = videoRef.current
-    if (!mounted || !video) return
+  const videoCallbackRef = useCallback((video: HTMLVideoElement | null) => {
+    if (!video) return
     video.muted = true
     video.playsInline = true
-    const tryPlay = () => { video.play().catch(() => {}) }
-    if (video.readyState >= 2) {
-      tryPlay()
-    } else {
-      video.addEventListener('loadeddata', tryPlay, { once: true })
+    video.setAttribute('playsinline', '')
+    video.setAttribute('webkit-playsinline', '')
+
+    const forcePlay = () => {
+      video.muted = true
+      video.play().catch(() => {})
     }
-  }, [mounted, isMobile])
+
+    video.addEventListener('loadedmetadata', forcePlay, { once: true })
+    video.addEventListener('canplay', forcePlay, { once: true })
+
+    if (video.readyState >= 3) {
+      forcePlay()
+    }
+
+    video.load()
+  }, [])
 
   return (
     <section className={styles.hero} data-hero>
@@ -47,15 +55,20 @@ export function HeroSection() {
       <div className={styles.heroImageWrapper} data-hero-image>
         {mounted && (
           <video
-            ref={videoRef}
+            key={isMobile ? 'mobile' : 'desktop'}
+            ref={videoCallbackRef}
             className={styles.heroImage}
-            src={isMobile ? '/henric-hero-mobile.mp4' : '/henric-hero.mp4'}
             autoPlay
             loop
             muted
             playsInline
             preload="auto"
-          />
+          >
+            <source
+              src={isMobile ? '/henric-hero-mobile.mp4' : '/henric-hero.mp4'}
+              type="video/mp4"
+            />
+          </video>
         )}
       </div>
     </section>
