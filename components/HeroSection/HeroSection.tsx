@@ -1,41 +1,22 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 import Link from 'next/link'
 import styles from './HeroSection.module.css'
 
 export function HeroSection() {
-  const [isMobile, setIsMobile] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768)
-    check()
-    setMounted(true)
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
-  const videoCallbackRef = useCallback((video: HTMLVideoElement | null) => {
+    const video = videoRef.current
     if (!video) return
+
+    if (window.innerWidth <= 768) {
+      video.src = '/henric-hero-mobile.mp4'
+    }
+
     video.muted = true
-    video.playsInline = true
-    video.setAttribute('playsinline', '')
-    video.setAttribute('webkit-playsinline', '')
-
-    const forcePlay = () => {
-      video.muted = true
-      video.play().catch(() => {})
-    }
-
-    video.addEventListener('loadedmetadata', forcePlay, { once: true })
-    video.addEventListener('canplay', forcePlay, { once: true })
-
-    if (video.readyState >= 3) {
-      forcePlay()
-    }
-
-    video.load()
+    video.play().catch(() => {})
   }, [])
 
   return (
@@ -53,23 +34,16 @@ export function HeroSection() {
       </div>
 
       <div className={styles.heroImageWrapper} data-hero-image>
-        {mounted && (
-          <video
-            key={isMobile ? 'mobile' : 'desktop'}
-            ref={videoCallbackRef}
-            className={styles.heroImage}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-          >
-            <source
-              src={isMobile ? '/henric-hero-mobile.mp4' : '/henric-hero.mp4'}
-              type="video/mp4"
-            />
-          </video>
-        )}
+        <video
+          ref={videoRef}
+          className={styles.heroImage}
+          src="/henric-hero.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
       </div>
     </section>
   )
