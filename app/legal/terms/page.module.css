@@ -89,12 +89,11 @@
 
 .documentItem:hover .arrow {
   opacity: 1;
-  color: var(--text-primary);
   transform: translateX(4px);
 }
 
 .documentItem:hover .documentNumber {
-  color: var(--text-primary);
+  opacity: 1;
 }
 
 .documentItem:focus-visible {
@@ -106,32 +105,31 @@
 .documentInfo {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 12px;
 }
 
 .documentNumber {
   font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  width: 32px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #000000;
+  width: 20px;
   flex-shrink: 0;
-  transition: color var(--duration-slow) var(--ease-out-quart);
+  opacity: 0.4;
 }
 
 .documentTitle {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: #000000;
 }
 
 .arrow {
   font-family: var(--font-sans);
-  color: var(--text-muted);
+  color: #000000;
   opacity: 0;
   transition: opacity 300ms var(--ease-out-expo),
-              color 300ms var(--ease-out-expo),
               transform 300ms var(--ease-out-expo);
 }
 
@@ -149,7 +147,7 @@
   }
 
   .documentInfo {
-    gap: 20px;
+    gap: 10px;
   }
 }
 
