@@ -151,7 +151,7 @@
 .link::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 6px;
   left: 0;
   height: 1px;
   width: 0;
