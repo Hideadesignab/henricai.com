@@ -17,23 +17,17 @@ export function HeroSection() {
       </div>
 
       <div className={styles.heroImageWrapper} data-hero-image>
-        <video
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className={`${styles.heroImage} ${styles.desktopVideo}`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          src="/henric-hero.mp4"
+          src="/henrichero.png"
+          alt="Henric platform interface"
         />
-        <video
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className={`${styles.heroImage} ${styles.mobileVideo}`}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          src="/henric-hero-mobile.mp4"
+          src="/henricheromobil.png"
+          alt="Henric platform interface"
         />
       </div>
     </section>
