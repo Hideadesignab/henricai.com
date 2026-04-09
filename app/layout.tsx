@@ -39,10 +39,12 @@ export const metadata: Metadata = {
     default: 'Henric',
     template: 'Henric | %s',
   },
-  description: 'Document intelligence for real estate',
+  description: 'Henric is document intelligence for real estate — powering professionals to search, extract, and understand every document with precision. Purpose-built for commercial real estate.',
   openGraph: {
-    title: 'Henric',
-    description: 'Document intelligence for real estate',
+    title: 'Henric — Document intelligence for real estate',
+    description: 'Henric is document intelligence for real estate — powering professionals to search, extract, and understand every document with precision. Purpose-built for commercial real estate.',
+    type: 'website',
+    url: 'https://henricai.com',
     siteName: 'Henric',
     images: [
       {
@@ -53,9 +55,9 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Henric',
-    description: 'Document intelligence for real estate',
+    card: 'summary',
+    title: 'Henric — Document intelligence for real estate',
+    description: 'Henric is document intelligence for real estate — powering professionals to search, extract, and understand every document with precision. Purpose-built for commercial real estate.',
     images: ['/og-image.jpg'],
   },
 }
