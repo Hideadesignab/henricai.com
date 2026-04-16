@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter, Playfair_Display, Tinos, Red_Rose } from 'next/font/google'
+import { Inter, Playfair_Display, Tinos, Red_Rose, Libre_Caslon_Text } from 'next/font/google'
 import { ConditionalHeader } from '@/components/ConditionalHeader'
 import { ConditionalFooter } from '@/components/ConditionalFooter'
 import { CookieBanner } from '@/components/CookieBanner'
@@ -31,6 +31,13 @@ const redRose = Red_Rose({
   subsets: ['latin'],
   weight: '400',
   variable: '--font-red-rose',
+  display: 'swap',
+})
+
+const libreCaslon = Libre_Caslon_Text({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-libre-caslon',
   display: 'swap',
 })
 
@@ -68,10 +75,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable} ${tinos.variable} ${redRose.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${tinos.variable} ${redRose.variable} ${libreCaslon.variable}`}>
       <body>
         <ConditionalHeader />
-        <main id="main-content" style={{ paddingTop: '48px' }}>
+        <main id="main-content" style={{ paddingTop: '40px' }}>
           {children}
         </main>
         <ConditionalFooter />

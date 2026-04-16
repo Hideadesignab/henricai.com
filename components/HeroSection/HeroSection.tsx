@@ -1,34 +1,35 @@
 import Link from 'next/link'
 import styles from './HeroSection.module.css'
 
+const comingSoon = process.env.NEXT_PUBLIC_COMING_SOON === 'true'
+
 export function HeroSection() {
   return (
-    <section className={styles.hero} data-hero>
+    <section className={styles.hero} data-hero data-theme="dark">
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video
+        className={styles.heroVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div className={styles.heroOverlay} />
       <div className={styles.heroContent}>
-        <h1 className={styles.headline}>
-          Real estate, without friction.
-        </h1>
-
-        <div className={styles.buttonRow}>
-          <Link href="/book-demo" className={styles.ctaButton}>
-            Book a demo
-          </Link>
-        </div>
-      </div>
-
-      <div className={styles.heroImageWrapper} data-hero-image>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={`${styles.heroImage} ${styles.desktopVideo}`}
-          src="/henrichero.png"
-          alt="Henric platform interface"
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className={`${styles.heroImage} ${styles.mobileVideo}`}
-          src="/henricheromobil.png"
-          alt="Henric platform interface"
-        />
+        <p className={styles.eyebrow}>AI for commercial real estate</p>
+        <h1 className={styles.headline}>Portfolio<br />Intelligence</h1>
+        <p className={styles.subtitle}>
+          A new way real estate teams think, decide, and operate across documents, buildings, and deals.
+        </p>
+        {!comingSoon && (
+          <div className={styles.buttonRow}>
+            <Link href="/book-demo" className={styles.ctaButton}>
+              Book a demo
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

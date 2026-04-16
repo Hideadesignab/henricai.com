@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import styles from './Header.module.css'
@@ -21,8 +21,8 @@ const navItems: NavItem[] = [
   { label: 'About', href: '/about' },
 ]
 
-const HEADER_HEIGHT = 48
-const SCROLL_THRESHOLD = 5
+const HEADER_HEIGHT = 40
+const comingSoon = process.env.NEXT_PUBLIC_COMING_SOON === 'true'
 
 interface HeaderProps {
   className?: string
@@ -31,13 +31,11 @@ interface HeaderProps {
 export function Header({ className }: HeaderProps) {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null)
-  const [isVisible, setIsVisible] = useState(true)
   const [showCta, setShowCta] = useState(false)
   const [variant, setVariant] = useState<'light' | 'dark' | 'green'>('light')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0, opacity: 0 })
-  const lastScrollY = useRef(0)
   const pathname = usePathname()
   const headerRef = useRef<HTMLElement>(null)
   const navItemRefs = useRef<Map<string, HTMLElement>>(new Map())
@@ -117,60 +115,32 @@ export function Header({ className }: HeaderProps) {
     return 'light' as const
   }, [])
 
-  // Re-detect variant on route change (after DOM updates)
+  // Detect variant before first paint
+  useLayoutEffect(() => {
+    setVariant(detectVariant())
+  }, [detectVariant])
+
+  // Re-detect variant on route change
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      setVariant(detectVariant())
-    })
-    return () => cancelAnimationFrame(raf)
+    setVariant(detectVariant())
   }, [pathname, detectVariant])
 
-  // Scroll direction detection + dark variant detection
+  // Scroll: variant detection + CTA visibility
   useEffect(() => {
     const handleScroll = () => {
       if (mobileMenuOpen) return
-      const currentY = window.scrollY
-
-      const heroEl = document.querySelector('[data-hero]')
-      const heroRect = heroEl?.getBoundingClientRect()
-      const heroHeight = heroRect ? heroRect.height : window.innerHeight
-
-      // Only allow header hide/show after the hero image is in view
-      const heroImage = heroEl?.querySelector('[data-hero-image]')
-      const heroImageRect = heroImage?.getBoundingClientRect()
-      const pastHeroImage = heroImageRect ? heroImageRect.top < HEADER_HEIGHT : currentY > heroHeight * 0.5
-
-      if (currentY < 10) {
-        setIsVisible(true)
-      } else if (!pastHeroImage) {
-        setIsVisible(true)
-      } else if (currentY > lastScrollY.current + SCROLL_THRESHOLD) {
-        setIsVisible(false)
-      } else if (currentY < lastScrollY.current - SCROLL_THRESHOLD) {
-        setIsVisible(true)
-      }
 
       const currentVariant = detectVariant()
-
-      // CTA: show as soon as the hero headline scrolls behind the header
-      if (heroEl) {
-        const heading = heroEl.querySelector('h1')
-        if (heading) {
-          const headingRect = heading.getBoundingClientRect()
-          setShowCta(headingRect.top < HEADER_HEIGHT)
-        } else {
-          setShowCta(currentY > 80)
-        }
-      } else {
-        setShowCta(currentY > 80)
-      }
-
       setVariant(currentVariant)
-      lastScrollY.current = currentY
-    }
 
-    // Initial detection
-    setVariant(detectVariant())
+      // CTA: only show when past the hero (variant is light)
+      // Never show while over the hero
+      if (currentVariant === 'dark') {
+        setShowCta(false)
+      } else {
+        setShowCta(window.scrollY > 80)
+      }
+    }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
@@ -203,7 +173,7 @@ export function Header({ className }: HeaderProps) {
 
   return (
     <>
-      <div className={`${styles.headerWrapper} ${!isVisible && !mobileMenuOpen ? styles.headerHidden : ''} ${mobileMenuOpen ? styles.headerAboveOverlay : ''}`} onMouseLeave={handleHeaderLeave}>
+      <div className={`${styles.headerWrapper} ${mobileMenuOpen ? styles.headerAboveOverlay : ''}`} onMouseLeave={handleHeaderLeave}>
         <header
           ref={headerRef}
           className={`${styles.header} ${variant === 'dark' ? styles.dark : ''} ${variant === 'green' ? styles.green : ''} ${activeDropdown ? styles.dropdownOpen : ''} ${className || ''}`}
@@ -218,30 +188,32 @@ export function Header({ className }: HeaderProps) {
             {/* Nav links hidden — keeping code for later */}
             <nav className={styles.nav} />
 
-            <div className={styles.rightGroup}>
-              <a
-                href="https://auth.eu.henricai.com"
-                className={`${styles.navLink} ${styles.navLinkWithUnderline}`}
-                onMouseEnter={() => {
-                  setActiveDropdown(null)
-                  setHoveredItem(null)
-                }}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className={styles.navLinkText}>Login</span>
-              </a>
-              <Link
-                href="/book-demo"
-                className={`${styles.cta} ${showCta ? styles.ctaVisible : ''}`}
-                onMouseEnter={() => {
-                  setActiveDropdown(null)
-                  setHoveredItem(null)
-                }}
-              >
-                Book a demo
-              </Link>
-            </div>
+            {!comingSoon && (
+              <div className={styles.rightGroup}>
+                <a
+                  href="https://auth.eu.henricai.com"
+                  className={`${styles.navLink} ${styles.navLinkWithUnderline}`}
+                  onMouseEnter={() => {
+                    setActiveDropdown(null)
+                    setHoveredItem(null)
+                  }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className={styles.navLinkText}>Login</span>
+                </a>
+                <Link
+                  href="/book-demo"
+                  className={`${styles.cta} ${showCta ? styles.ctaVisible : ''}`}
+                  onMouseEnter={() => {
+                    setActiveDropdown(null)
+                    setHoveredItem(null)
+                  }}
+                >
+                  Book a demo
+                </Link>
+              </div>
+            )}
 
             {/* Hamburger hidden — keeping code for later */}
           </div>

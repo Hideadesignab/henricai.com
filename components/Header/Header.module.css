@@ -7,10 +7,6 @@
   transition: transform 200ms ease;
 }
 
-.headerHidden {
-  transform: translateY(-100%);
-}
-
 .headerAboveOverlay {
   z-index: 301;
 }
@@ -30,7 +26,7 @@
 
 .header {
   position: relative;
-  height: 48px;
+  height: 40px;
   background: var(--header-bg, #FFFFFF);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -54,9 +50,11 @@
   opacity: 1;
 }
 
-/* Dark variant for dark pages (e.g. /security) */
+/* Dark variant — hero section (transparent) */
 .dark {
-  background: #000000;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .dark::after {
@@ -64,20 +62,20 @@
 }
 
 .dark .logoText {
-  color: var(--text-primary-dark);
+  color: #ffffff;
 }
 
 .dark .navLink {
-  color: var(--text-primary-dark);
+  color: #ffffff;
 }
 
 .dark .indicator {
-  background: #E8E6E1;
+  background: #A3A2A1;
 }
 
 .dark .cta {
-  background: #FFFFFF;
-  color: var(--text-primary);
+  background: #A3A2A1;
+  color: #191614;
 }
 
 /* Green variant for green sections */
@@ -228,12 +226,13 @@
 
 .cta {
   font-family: var(--font-sans);
-  font-size: 12px !important;
+  font-size: 13px !important;
   font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--button-text);
   background: var(--button-bg);
   border: none !important;
-  padding: 8px 0 !important;
+  padding: 7px 0 !important;
   border-radius: var(--radius-button) !important;
   line-height: 1;
   text-decoration: none;
@@ -248,7 +247,7 @@
 
 .ctaVisible {
   max-width: 140px;
-  padding: 8px 16px !important;
+  padding: 7px 12px !important;
   transition: max-width 400ms cubic-bezier(0.16, 1, 0.3, 1),
               padding 400ms cubic-bezier(0.16, 1, 0.3, 1),
               background 200ms ease,
@@ -298,21 +297,21 @@
 }
 
 .hamburgerLine:first-child {
-  top: 18px;
+  top: 16px;
 }
 
 .hamburgerLine:last-child {
-  top: 24px;
+  top: 22px;
 }
 
 /* Open state — X */
 .hamburgerOpen .hamburgerLine:first-child {
-  top: 21px;
+  top: 19px;
   transform: rotate(45deg);
 }
 
 .hamburgerOpen .hamburgerLine:last-child {
-  top: 21px;
+  top: 19px;
   transform: rotate(-45deg);
 }
 
